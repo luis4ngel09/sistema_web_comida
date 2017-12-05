@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+
+<body>
+  
+<div class="container">
+  <div class="info">
+    <h1>SISTEMA WEB COMIDA</h1>
+  </div>
+</div>
+<div class="form">
+<div class="thumbnail"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/169963/hat.svg"/></div>
+  <form class="login-form" method="post" action="">{% csrf_token %}
+        <input type="text" name="username" placeholder="Usuario">
+        <input type="password" name="password" placeholder="Contraseña">
+        <button>Ingresar</button>
+        {{ msg}}
+  </form>
+</div>
+
+</body>
+</html>

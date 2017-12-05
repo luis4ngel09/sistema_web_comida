@@ -1,0 +1,19 @@
+{% extends 'comida/base.html' %}
+{%block section%}
+        {% if comida.fecha_creacion %}
+        <a href="{% url 'comidaEditar' pk=comida.pk%}">[ Editar ]</a>
+        <a href="{% url 'pedidoNew' %}">[ Pedir]</a>
+        <time datetime=" {{ comida.fecha_creacion }}" pubdate>publicado {{ comida.fecha_creacion }}</time>
+        {% endif %}
+        <h1>Costo: ${{ comida.costo }}</h1>
+        <h1>Clave: {{ comida.pk }}</h1>
+        <h1>Nombre: {{ comida.nombre }}</h1>
+        <p>descripcion: {{ comida.descripcion|linebreaksbr }}</p>
+        <figure>
+		<img src="/media/{{comida.imagen}}">
+		<figcaption>
+			<p>{{comida.imagen|linebreaksbr}}</p>
+		</figcaption>
+	</figure>
+		
+{%endblock section%}

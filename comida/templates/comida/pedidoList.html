@@ -1,0 +1,18 @@
+{% extends 'comida/base.html' %}
+{% block section %}
+<h1>Lista de los pedidos</h1>
+	{% for pedido in pedidos %}
+
+		<article>
+			<header>
+				<h1><a href="{% url 'pedidoEditar' pk=pedido.pk %}">{{ pedido.nombre }}</a></h1>
+				<time datetime=" {{ pedido.fecha_creacion }}" pubdate>publicado {{ pedido.fecha_creacion }}</time>
+			</header>
+			<p>pk: {{ pedido.pk }}</p>
+			 <p>Comida: {{ pedido.comida_id }}</p>
+			 <p>Cantidad: {{ pedido.cantidad }}</p>
+			 <p>Descripcion: {{ pedido.descripcion|linebreaks }}</p>
+			
+		</article>
+	{% endfor %}
+{% endblock section %}

@@ -1,0 +1,53 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sistema_web_comida</title>
+	<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+</head>
+<body>
+<div id="agrupar">
+	<header id="cabecera">
+		<p> SISTEMA WEB COMIDA </p>
+	</header>
+	<nav id="menu">
+		<ul>
+			<li><a href="{%url 'index'%}">Principal</a></li>
+			<li>Galeria</li>
+			<li>contacto</li>
+			<li><a href="{%url 'logout'%}">Salir ALV.</a></li>
+		</ul>
+	</nav>
+	<aside id="columna">
+		<blockquote>
+			<details>
+				<summary>Comida</summary>
+				<a href="{%url 'principal'%}">Mostrar</a><br>
+				<a href="comida/nueva"> Agregar</a>
+			</details>
+		</blockquote>
+		<blockquote>
+			<details>
+				<summary>Pedidos</summary>
+					<a href="{% url 'pedidoList'%}">Mostrar</a><br>
+					<a href="{% url 'pedidoNew'%}">Agregar</a>
+			</details>
+		</blockquote>
+	</aside>
+	<section id="seccion">
+		{% block section %}
+		<strong><p>Bienvenido:</strong> <br>{{ user.username|capfirst }}</p><br>
+		<strong><p>La Ultima Vez Que Estuviste Aqui Fue:</strong> <br>{{ user.last_login|upper }}</p><br>
+		<strong><p>Eres Miembre desde:</strong><br> {{ user.date_joined|upper }}</p>
+		{% endblock %}
+	</section>
+
+	<footer id="pie">
+		<details>
+			<summary>Derechos Reservados.</summary>
+			<p>DJango</p>
+		</details>
+	</footer>
+</div>
+</body>
+</html>
